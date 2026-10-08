@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>勉強ログ | 哲学ノート</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --main:#afaffa;
+  --main-deep:#6b6bd6;
+  --main-pale:#ececff;
+  --paper:#fbfbff;
+  --ink:#26264d;
+  --ink-soft:#55557f;
+  --line:#c9c9f5;
+  --marker:#fff3a8;
+  --serif:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+  --sans:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:var(--sans);color:var(--ink);line-height:1.9;
+  background:var(--main);
+  background-image:radial-gradient(rgba(255,255,255,.35) 1.2px,transparent 1.2px);
+  background-size:22px 22px;
+}
+a{color:inherit}
+a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+
+header{background:var(--ink);color:#fff}
+.bar{max-width:960px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.logo{font-family:var(--serif);font-weight:700;font-size:1.25rem;text-decoration:none;letter-spacing:.08em}
+nav ul{list-style:none;display:flex;gap:6px;flex-wrap:wrap}
+nav a{display:block;padding:6px 14px;border-radius:999px;text-decoration:none;font-size:.92rem}
+nav a:hover{background:var(--main);color:var(--ink)}
+nav a[aria-current="page"]{background:var(--main);color:var(--ink);font-weight:700}
+
+main{max-width:960px;margin:0 auto;padding:36px 20px 56px;display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:28px;align-items:start}
+
+.title{grid-column:1/-1}
+h1{font-family:var(--serif);font-size:1.7rem;display:inline-block;background:var(--ink);color:#fff;padding:2px 20px;border-radius:4px;letter-spacing:.08em}
+.lead{margin-top:10px;font-size:.95rem;color:var(--ink)}
+
+/* timeline */
+.timeline{background:var(--paper);border-radius:6px;box-shadow:0 0 0 1px var(--line),6px 6px 0 var(--main-deep);list-style:none}
+.post{display:flex;gap:14px;padding:20px 24px;border-bottom:1px solid var(--line)}
+.post:last-child{border-bottom:0}
+.avatar{flex:none;width:44px;height:44px;border-radius:50%;background:var(--main);display:grid;place-items:center;font-family:var(--serif);font-weight:700}
+.post-body{min-width:0}
+.meta{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.name{font-weight:700}
+.post time{font-size:.82rem;color:var(--ink-soft)}
+.post p{margin-top:4px;overflow-wrap:anywhere}
+.post mark{background:linear-gradient(transparent 60%,var(--marker) 60%);color:inherit}
+.end{padding:18px;text-align:center;font-size:.88rem;color:var(--ink-soft);background:var(--main-pale);border-radius:0 0 6px 6px}
+
+/* side */
+aside{display:grid;gap:18px;position:sticky;top:16px}
+.box{background:var(--paper);border-radius:6px;padding:16px 18px;box-shadow:0 0 0 1px var(--line)}
+.box h2{font-family:var(--serif);font-size:1rem;margin-bottom:6px;padding-bottom:4px;border-bottom:2px solid var(--main)}
+.box ul{list-style:none;font-size:.9rem}
+.box li{padding:2px 0}
+.box a{text-underline-offset:3px}
+.box a:hover{color:var(--main-deep)}
+
+footer{background:var(--ink);color:#d6d6ff;text-align:center;padding:26px 20px;font-size:.88rem}
+footer a{color:#fff}
+
+@media (max-width:760px){
+  main{grid-template-columns:1fr}
+  aside{position:static}
+  .post{padding:16px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <a class="logo" href="index.html">哲学ノート</a>
+    <nav aria-label="メインメニュー">
+      <ul>
+        <li><a href="index.html">ホーム</a></li>
+        <li><a href="blog.html" aria-current="page">ブログ</a></li>
+        <li><a href="column.html">コラム</a></li>
+        <li><a href="about.html">このサイトについて</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="title">
+    <h1>勉強ログ</h1>
+    <p class="lead">その日に勉強したことを短く記録しています。新しい日記が上に追加されます。</p>
+  </div>
+
+  <ol class="timeline" reversed>
+    <!-- 新しい投稿は、下の<li class="post">をコピーして一番上に追加してね -->
+    <li class="post">
+      <div class="avatar" aria-hidden="true">哲</div>
+      <div class="post-body">
+        <div class="meta"><span class="name">哲学ノート</span><time datetime="2026-10-08">2026.10.08</time></div>
+        <p>（ここに今日の勉強日記が入ります。<mark>わかったこと</mark>や疑問に思ったことを、ツイートみたいに短く書く場所です。）</p>
+      </div>
+    </li>
+    <li class="post">
+      <div class="avatar" aria-hidden="true">哲</div>
+      <div class="post-body">
+        <div class="meta"><span class="name">哲学ノート</span><time datetime="2026-10-07">2026.10.07</time></div>
+        <p>（ここに前の日の日記が入ります。）</p>
+      </div>
+    </li>
+    <li class="post">
+      <div class="avatar" aria-hidden="true">哲</div>
+      <div class="post-body">
+        <div class="meta"><span class="name">哲学ノート</span><time datetime="2026-10-06">2026.10.06</time></div>
+        <p>（ここにさらに前の日の日記が入ります。長めに書いても大丈夫です。）</p>
+      </div>
+    </li>
+    <li class="post">
+      <div class="avatar" aria-hidden="true">哲</div>
+      <div class="post-body">
+        <div class="meta"><span class="name">哲学ノート</span><time datetime="2026-10-05">2026.10.05</time></div>
+        <p>（ここに勉強をはじめた頃の日記が入ります。）</p>
+      </div>
+    </li>
+    <li class="end">ここまでが最初の記録です。</li>
+  </ol>
+
+  <aside>
+    <div class="box">
+      <h2>このページについて</h2>
+      <p style="font-size:.9rem">日付と日記だけのシンプルなログです。くわしい考えごとは<a href="column.html">コラム</a>にまとめます。</p>
+    </div>
+    <div class="box">
+      <h2>ほかのページ</h2>
+      <ul>
+        <li><a href="index.html">ホーム</a></li>
+        <li><a href="column.html">コラム</a></li>
+        <li><a href="about.html">このサイトについて</a></li>
+      </ul>
+    </div>
+  </aside>
+</main>
+
+<footer>
+  <p>© 哲学ノート ／ <a href="about.html">このサイトについて</a></p>
+</footer>
+
+</body>
+</html>
