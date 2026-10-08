@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>哲学ノート | 哲学の勉強サイト</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --main:#afaffa;
+  --main-deep:#6b6bd6;
+  --main-pale:#ececff;
+  --paper:#fbfbff;
+  --ink:#26264d;
+  --ink-soft:#55557f;
+  --line:#c9c9f5;
+  --marker:#fff3a8;
+  --serif:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+  --sans:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);color:var(--ink);line-height:1.9;
+  background:var(--main);
+  background-image:radial-gradient(rgba(255,255,255,.35) 1.2px,transparent 1.2px);
+  background-size:22px 22px;
+}
+a{color:inherit}
+a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+
+/* header */
+header{background:var(--ink);color:#fff}
+.bar{max-width:960px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.logo{font-family:var(--serif);font-weight:700;font-size:1.25rem;text-decoration:none;letter-spacing:.08em}
+nav ul{list-style:none;display:flex;gap:6px;flex-wrap:wrap}
+nav a{display:block;padding:6px 14px;border-radius:999px;text-decoration:none;font-size:.92rem}
+nav a:hover{background:var(--main);color:var(--ink)}
+nav a[aria-current="page"]{background:var(--main);color:var(--ink);font-weight:700}
+
+main{max-width:960px;margin:0 auto;padding:36px 20px 56px}
+
+/* hero: a notebook page */
+.notebook{
+  position:relative;background:var(--paper);border-radius:6px;
+  padding:56px 40px 48px 96px;
+  box-shadow:0 0 0 1px var(--line),8px 8px 0 var(--main-deep);
+  background-image:repeating-linear-gradient(transparent 0,transparent 37px,var(--line) 37px,var(--line) 38px);
+  background-position:0 20px;
+}
+.notebook::before{ /* margin line */
+  content:"";position:absolute;top:0;bottom:0;left:68px;width:2px;background:#f08fa8;opacity:.7;
+}
+.notebook::after{ /* binder holes */
+  content:"";position:absolute;left:22px;top:44px;width:16px;height:16px;border-radius:50%;background:var(--main);
+  box-shadow:0 120px 0 var(--main),0 240px 0 var(--main);
+}
+.hero-q{font-family:var(--serif);font-weight:700;font-size:clamp(1.9rem,5.4vw,3.2rem);line-height:1.5;letter-spacing:.04em}
+.hero-q span{background:linear-gradient(transparent 62%,var(--marker) 62%)}
+.hero-sub{margin-top:22px;color:var(--ink-soft);max-width:34em}
+.hero-note{margin-top:26px;display:inline-block;font-size:.88rem;border:1.5px dashed var(--main-deep);border-radius:4px;padding:2px 12px;color:var(--main-deep);background:#fff}
+
+/* sections */
+section{margin-top:44px}
+h2{font-family:var(--serif);font-size:1.45rem;display:inline-block;background:var(--ink);color:#fff;padding:2px 18px;border-radius:4px;margin-bottom:18px;letter-spacing:.06em}
+.panel{background:var(--paper);border-radius:6px;padding:26px 28px;box-shadow:0 0 0 1px var(--line)}
+
+/* study map */
+.map{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.era{background:var(--main-pale);border-left:6px solid var(--main-deep);border-radius:0 6px 6px 0;padding:14px 18px}
+.era h3{font-family:var(--serif);font-size:1.05rem;margin-bottom:4px}
+.era p{font-size:.9rem;color:var(--ink-soft);line-height:1.7}
+.era b{color:var(--ink)}
+
+/* blog preview (twitter-like) */
+.posts{list-style:none}
+.posts li{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+.posts li:last-child{border-bottom:0}
+.avatar{flex:none;width:40px;height:40px;border-radius:50%;background:var(--main);display:grid;place-items:center;font-family:var(--serif);font-weight:700}
+.posts time{font-size:.82rem;color:var(--ink-soft)}
+.posts p{margin-top:2px}
+
+/* column preview */
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.col{background:var(--paper);border-radius:6px;box-shadow:0 0 0 1px var(--line);overflow:hidden}
+.thumb{height:110px;background:var(--main-pale);display:grid;place-items:center;font-family:var(--serif);color:var(--main-deep);font-size:1rem;border-bottom:2px dashed var(--main)}
+.col div.body{padding:14px 18px 18px}
+.tag{font-size:.78rem;background:var(--main);padding:1px 10px;border-radius:999px;font-weight:700}
+.col h3{font-family:var(--serif);font-size:1.05rem;margin:8px 0 4px}
+.col p{font-size:.9rem;color:var(--ink-soft);line-height:1.7}
+
+.more{margin-top:14px;text-align:right}
+.more a{font-weight:700;color:var(--main-deep);text-underline-offset:4px}
+.more a:hover{color:var(--ink)}
+
+footer{background:var(--ink);color:#d6d6ff;text-align:center;padding:26px 20px;font-size:.88rem}
+footer a{color:#fff}
+
+@media (max-width:640px){
+  .notebook{padding:40px 20px 36px 60px}
+  .notebook::before{left:42px}
+  .notebook::after{left:12px;width:14px;height:14px}
+  .panel{padding:20px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <a class="logo" href="index.html">哲学ノート</a>
+    <nav aria-label="メインメニュー">
+      <ul>
+        <li><a href="index.html" aria-current="page">ホーム</a></li>
+        <li><a href="blog.html">ブログ</a></li>
+        <li><a href="column.html">コラム</a></li>
+        <li><a href="about.html">このサイトについて</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="notebook">
+    <h1 class="hero-q">当たり前のことを、<br><span>もう一度ちゃんと疑ってみる。</span></h1>
+    <p class="hero-sub">哲学を勉強しながら、わかったことや考えたことをノートみたいに記録していくサイトです。まだ勉強中なので、間違いや書きかけもそのまま残します。</p>
+    <span class="hero-note">勉強中 ― 随時更新</span>
+  </div>
+
+  <section aria-labelledby="map">
+    <h2 id="map">勉強マップ</h2>
+    <div class="map">
+      <div class="era">
+        <h3>古代ギリシア</h3>
+        <p><b>ソクラテス・プラトン・アリストテレス</b><br>問いかけること、イデア、「幸福」とは何か。</p>
+      </div>
+      <div class="era">
+        <h3>近世</h3>
+        <p><b>デカルト・スピノザ・ロック・ヒューム</b><br>「私」は確かか、理性と経験のどちらが大事か。</p>
+      </div>
+      <div class="era">
+        <h3>近代ドイツ哲学</h3>
+        <p><b>カント・ヘーゲル</b><br>人間が世界を認識するしくみ、弁証法。</p>
+      </div>
+      <div class="era">
+        <h3>近現代</h3>
+        <p><b>ニーチェ・サルトル・ウィトゲンシュタイン</b><br>実存、言語、「意味」ってなんだろう。</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="blog">
+    <h2 id="blog">勉強ログ</h2>
+    <div class="panel">
+      <ul class="posts">
+        <li>
+          <div class="avatar" aria-hidden="true">哲</div>
+          <div><time datetime="2026-10-08">2026.10.08</time><p>（ここに最新の勉強日記が入ります）</p></div>
+        </li>
+        <li>
+          <div class="avatar" aria-hidden="true">哲</div>
+          <div><time datetime="2026-10-07">2026.10.07</time><p>（ここに前回の日記が入ります）</p></div>
+        </li>
+        <li>
+          <div class="avatar" aria-hidden="true">哲</div>
+          <div><time datetime="2026-10-06">2026.10.06</time><p>（ここにその前の日記が入ります）</p></div>
+        </li>
+      </ul>
+      <p class="more"><a href="blog.html">ログをぜんぶ見る</a></p>
+    </div>
+  </section>
+
+  <section aria-labelledby="column">
+    <h2 id="column">コラム</h2>
+    <div class="cols">
+      <article class="col">
+        <div class="thumb" aria-hidden="true">四コマ</div>
+        <div class="body"><span class="tag">四コマ</span><h3>哲学者あるある（仮）</h3><p>勉強していて思わず描いてしまった四コマ。</p></div>
+      </article>
+      <article class="col">
+        <div class="thumb" aria-hidden="true">小論文</div>
+        <div class="body"><span class="tag">小論文</span><h3>「考える」ってどういうこと？（仮）</h3><p>軽めの小論文形式で、ひとつの問いを掘り下げます。</p></div>
+      </article>
+      <article class="col">
+        <div class="thumb" aria-hidden="true">イラスト</div>
+        <div class="body"><span class="tag">イラスト</span><h3>哲学者の落書き（仮）</h3><p>関連のイラストや漫画をまとめて置く予定です。</p></div>
+      </article>
+    </div>
+    <p class="more"><a href="column.html">コラムをぜんぶ見る</a></p>
+  </section>
+</main>
+
+<footer>
+  <p>© 哲学ノート ／ <a href="about.html">このサイトについて</a></p>
+</footer>
+
+</body>
+</html>
