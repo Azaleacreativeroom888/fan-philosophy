@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>コラム | 哲学ノート</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --main:#afaffa;
+  --main-deep:#6b6bd6;
+  --main-pale:#ececff;
+  --paper:#fbfbff;
+  --ink:#26264d;
+  --ink-soft:#55557f;
+  --line:#c9c9f5;
+  --marker:#fff3a8;
+  --serif:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+  --sans:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);color:var(--ink);line-height:1.9;
+  background:var(--main);
+  background-image:radial-gradient(rgba(255,255,255,.35) 1.2px,transparent 1.2px);
+  background-size:22px 22px;
+}
+a{color:inherit}
+a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+
+header{background:var(--ink);color:#fff}
+.bar{max-width:960px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.logo{font-family:var(--serif);font-weight:700;font-size:1.25rem;text-decoration:none;letter-spacing:.08em}
+nav ul{list-style:none;display:flex;gap:6px;flex-wrap:wrap}
+nav a{display:block;padding:6px 14px;border-radius:999px;text-decoration:none;font-size:.92rem}
+nav a:hover{background:var(--main);color:var(--ink)}
+nav a[aria-current="page"]{background:var(--main);color:var(--ink);font-weight:700}
+
+main{max-width:960px;margin:0 auto;padding:36px 20px 56px}
+h1{font-family:var(--serif);font-size:1.7rem;display:inline-block;background:var(--ink);color:#fff;padding:2px 20px;border-radius:4px;letter-spacing:.08em}
+.lead{margin-top:10px;font-size:.95rem}
+.jump{margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;list-style:none}
+.jump a{display:block;padding:4px 16px;border-radius:999px;background:var(--paper);box-shadow:0 0 0 1px var(--line);text-decoration:none;font-size:.9rem;font-weight:700}
+.jump a:hover{background:var(--ink);color:#fff}
+
+section{margin-top:44px}
+h2{font-family:var(--serif);font-size:1.4rem;display:inline-block;background:var(--ink);color:#fff;padding:2px 18px;border-radius:4px;margin-bottom:6px;letter-spacing:.06em}
+.sec-note{font-size:.9rem;margin-bottom:16px}
+
+/* 4koma */
+.koma{background:var(--paper);border-radius:6px;padding:22px 24px;box-shadow:0 0 0 1px var(--line),6px 6px 0 var(--main-deep)}
+.koma h3{font-family:var(--serif);font-size:1.1rem;margin-bottom:12px}
+.koma-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.panel{aspect-ratio:3/4;border:2px solid var(--ink);background:var(--main-pale);display:grid;place-items:center;text-align:center;font-size:.85rem;color:var(--ink-soft);padding:8px}
+.panel b{display:block;font-family:var(--serif);font-size:1.3rem;color:var(--main-deep)}
+.koma-cap{margin-top:12px;font-size:.88rem;color:var(--ink-soft)}
+
+/* gallery */
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.work{background:var(--paper);border-radius:6px;box-shadow:0 0 0 1px var(--line);overflow:hidden}
+.work .img{aspect-ratio:4/3;background:var(--main-pale);display:grid;place-items:center;color:var(--main-deep);font-family:var(--serif);border-bottom:2px dashed var(--main)}
+.work div.cap{padding:10px 14px 14px}
+.tag{font-size:.75rem;background:var(--main);padding:1px 10px;border-radius:999px;font-weight:700}
+.work h3{font-family:var(--serif);font-size:1rem;margin-top:6px}
+.work p{font-size:.85rem;color:var(--ink-soft);line-height:1.6}
+
+/* essay */
+.essay{background:var(--paper);border-radius:6px;padding:30px 36px;box-shadow:0 0 0 1px var(--line);margin-bottom:22px;background-image:repeating-linear-gradient(transparent 0,transparent 33px,var(--line) 33px,var(--line) 34px);background-position:0 8px}
+.essay-meta{font-size:.82rem;color:var(--ink-soft)}
+.essay h3{font-family:var(--serif);font-size:1.4rem;line-height:1.5;margin:4px 0 14px}
+.essay h4{display:inline-block;font-family:var(--serif);font-size:.95rem;border-bottom:3px solid var(--main);margin-top:10px}
+.essay p{margin-top:4px}
+.essay mark{background:linear-gradient(transparent 60%,var(--marker) 60%);color:inherit}
+.refs{margin-top:16px;font-size:.84rem;color:var(--ink-soft);border-top:1px dashed var(--main-deep);padding-top:8px}
+
+footer{background:var(--ink);color:#d6d6ff;text-align:center;padding:26px 20px;font-size:.88rem}
+footer a{color:#fff}
+
+@media (max-width:640px){
+  .koma-grid{grid-template-columns:repeat(2,1fr)}
+  .essay{padding:22px 20px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <a class="logo" href="index.html">哲学ノート</a>
+    <nav aria-label="メインメニュー">
+      <ul>
+        <li><a href="index.html">ホーム</a></li>
+        <li><a href="blog.html">ブログ</a></li>
+        <li><a href="column.html" aria-current="page">コラム</a></li>
+        <li><a href="about.html">このサイトについて</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <h1>コラム</h1>
+  <p class="lead">哲学にまつわる四コマ・イラスト・漫画と、軽めの小論文を置いています。</p>
+  <ul class="jump">
+    <li><a href="#koma">四コマ</a></li>
+    <li><a href="#art">イラスト・漫画</a></li>
+    <li><a href="#essay">小論文</a></li>
+  </ul>
+
+  <section id="koma" aria-labelledby="h-koma">
+    <h2 id="h-koma">四コマ</h2>
+    <p class="sec-note">勉強しながら描いた、哲学ネタの四コマです。</p>
+    <article class="koma">
+      <h3>第1話　（タイトル未定）</h3>
+      <div class="koma-grid">
+        <div class="panel"><div><b>起</b>四コマの1枚目を<br>ここに入れる</div></div>
+        <div class="panel"><div><b>承</b>2枚目</div></div>
+        <div class="panel"><div><b>転</b>3枚目</div></div>
+        <div class="panel"><div><b>結</b>4枚目</div></div>
+      </div>
+      <p class="koma-cap">※画像を入れるときは、各 <code>.panel</code> の中身を <code>&lt;img src="画像のパス" alt="説明"&gt;</code> に差し替えてね。</p>
+    </article>
+  </section>
+
+  <section id="art" aria-labelledby="h-art">
+    <h2 id="h-art">イラスト・漫画</h2>
+    <p class="sec-note">哲学者や用語をモチーフにした絵や、短い漫画を置く場所です。</p>
+    <div class="gallery">
+      <article class="work"><div class="img" aria-hidden="true">イラスト</div><div class="cap"><span class="tag">イラスト</span><h3>作品タイトル（仮）</h3><p>ひとこと説明が入ります。</p></div></article>
+      <article class="work"><div class="img" aria-hidden="true">漫画</div><div class="cap"><span class="tag">漫画</span><h3>作品タイトル（仮）</h3><p>ひとこと説明が入ります。</p></div></article>
+      <article class="work"><div class="img" aria-hidden="true">イラスト</div><div class="cap"><span class="tag">イラスト</span><h3>作品タイトル（仮）</h3><p>ひとこと説明が入ります。</p></div></article>
+    </div>
+  </section>
+
+  <section id="essay" aria-labelledby="h-essay">
+    <h2 id="h-essay">小論文</h2>
+    <p class="sec-note">ひとつの問いを決めて、自分なりに考えてみる軽めの記事です。</p>
+    <article class="essay">
+      <p class="essay-meta"><time datetime="2026-10-08">2026.10.08</time> ／ 小論文 No.1</p>
+      <h3>（ここに問いが入ります）</h3>
+      <h4>問い</h4>
+      <p>なにについて考えるのか、きっかけと一緒に書きます。</p>
+      <h4>考察</h4>
+      <p>勉強した哲学者の考えを紹介しつつ、<mark>自分はどう思ったか</mark>を書きます。</p>
+      <h4>まとめ</h4>
+      <p>いまの時点での結論と、まだ残っている疑問を書きます。</p>
+      <p class="refs">参考：（読んだ本や資料をここに書く）</p>
+    </article>
+  </section>
+</main>
+
+<footer>
+  <p>© 哲学ノート ／ <a href="about.html">このサイトについて</a></p>
+</footer>
+
+</body>
+</html>
