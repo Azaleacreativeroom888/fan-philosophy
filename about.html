@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>このサイトについて | 哲学ノート</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --main:#afaffa;
+  --main-deep:#6b6bd6;
+  --main-pale:#ececff;
+  --paper:#fbfbff;
+  --ink:#26264d;
+  --ink-soft:#55557f;
+  --line:#c9c9f5;
+  --marker:#fff3a8;
+  --err:#b3263e;
+  --serif:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+  --sans:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);color:var(--ink);line-height:1.9;
+  background:var(--main);
+  background-image:radial-gradient(rgba(255,255,255,.35) 1.2px,transparent 1.2px);
+  background-size:22px 22px;
+}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+
+header{background:var(--ink);color:#fff}
+.bar{max-width:960px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.logo{font-family:var(--serif);font-weight:700;font-size:1.25rem;text-decoration:none;letter-spacing:.08em}
+nav ul{list-style:none;display:flex;gap:6px;flex-wrap:wrap}
+nav a{display:block;padding:6px 14px;border-radius:999px;text-decoration:none;font-size:.92rem}
+nav a:hover{background:var(--main);color:var(--ink)}
+nav a[aria-current="page"]{background:var(--main);color:var(--ink);font-weight:700}
+
+main{max-width:960px;margin:0 auto;padding:36px 20px 56px}
+h1{font-family:var(--serif);font-size:1.7rem;display:inline-block;background:var(--ink);color:#fff;padding:2px 20px;border-radius:4px;letter-spacing:.08em}
+.lead{margin-top:10px;font-size:.95rem}
+section{margin-top:44px}
+h2{font-family:var(--serif);font-size:1.4rem;display:inline-block;background:var(--ink);color:#fff;padding:2px 18px;border-radius:4px;margin-bottom:6px;letter-spacing:.06em}
+.sec-note{font-size:.9rem;margin-bottom:16px}
+
+/* about card */
+.about{background:var(--paper);border-radius:6px;padding:28px 34px;box-shadow:0 0 0 1px var(--line),6px 6px 0 var(--main-deep);background-image:repeating-linear-gradient(transparent 0,transparent 33px,var(--line) 33px,var(--line) 34px);background-position:0 8px}
+.about p+p{margin-top:12px}
+.about mark{background:linear-gradient(transparent 60%,var(--marker) 60%);color:inherit}
+.profile{margin-top:16px;display:grid;grid-template-columns:auto 1fr;gap:4px 18px;font-size:.92rem;background:#fff;border:1.5px dashed var(--main-deep);border-radius:4px;padding:10px 16px}
+.profile dt{font-weight:700;color:var(--main-deep)}
+
+/* links */
+.group{font-family:var(--serif);font-size:.95rem;margin:20px 0 10px;display:flex;align-items:center;gap:10px}
+.group::after{content:"";flex:1;height:2px;background:var(--ink);opacity:.25}
+.links{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;list-style:none}
+.link{display:flex;align-items:center;gap:14px;text-decoration:none;background:var(--paper);border-radius:6px;padding:12px 16px;box-shadow:0 0 0 1px var(--line);border-left:5px solid var(--main-deep);transition:transform .2s,box-shadow .2s}
+.link:hover{transform:translateY(-2px);box-shadow:0 0 0 1px var(--main-deep),4px 4px 0 var(--ink)}
+.ico{flex:none;width:40px;height:40px;border-radius:50%;background:var(--main);display:grid;place-items:center;font-size:1.2rem}
+.link b{display:block;font-size:.95rem;line-height:1.4}
+.link small{display:block;font-size:.8rem;color:var(--ink-soft);line-height:1.5}
+
+/* form */
+.form-card{background:var(--paper);border-radius:6px;padding:28px 32px;box-shadow:0 0 0 1px var(--line)}
+.form-intro{font-size:.92rem;margin-bottom:20px}
+.fg{margin-bottom:18px}
+label{display:block;font-weight:700;font-size:.9rem;margin-bottom:4px}
+.req{color:var(--err)}
+input,textarea{width:100%;font:inherit;color:var(--ink);background:#fff;border:2px solid var(--line);border-radius:4px;padding:10px 14px}
+textarea{min-height:150px;resize:vertical}
+input:focus,textarea:focus{outline:none;border-color:var(--main-deep);box-shadow:0 0 0 3px var(--main-pale)}
+.field-error{display:block;font-size:.82rem;color:var(--err);margin-top:4px}
+.btn{font:inherit;font-weight:700;letter-spacing:.1em;cursor:pointer;background:var(--ink);color:#fff;border:0;border-radius:999px;padding:10px 32px;transition:background .2s}
+.btn:hover{background:var(--main-deep)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.form-success{display:none;background:var(--main-pale);border:2px solid var(--main-deep);border-radius:4px;padding:14px 18px;text-align:center;margin-bottom:18px;font-weight:700}
+.form-error-global{display:none;background:#fde8ec;border:2px solid var(--err);color:var(--err);border-radius:4px;padding:10px 16px;margin-bottom:16px;font-size:.9rem}
+
+.back{display:inline-block;margin-top:28px;font-weight:700;text-underline-offset:4px}
+.back:hover{color:var(--main-deep)}
+
+footer{background:var(--ink);color:#d6d6ff;text-align:center;padding:26px 20px;font-size:.82rem;line-height:1.9}
+footer p{max-width:780px;margin:0 auto 6px}
+
+@media (max-width:640px){
+  .about{padding:22px 20px}
+  .form-card{padding:22px 18px}
+  .links{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.link{transition:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <a class="logo" href="index.html">哲学ノート</a>
+    <nav aria-label="メインメニュー">
+      <ul>
+        <li><a href="index.html">ホーム</a></li>
+        <li><a href="blog.html">ブログ</a></li>
+        <li><a href="column.html">コラム</a></li>
+        <li><a href="about.html" aria-current="page">このサイトについて</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <h1>このサイトについて</h1>
+  <p class="lead">サイトの紹介と、リンク・お問い合わせフォームのページです。</p>
+
+  <section aria-labelledby="h-about">
+    <h2 id="h-about">哲学ノートとは</h2>
+    <div class="about">
+      <p>哲学を勉強しながら、わかったことや考えたことをノートみたいに記録しているサイトです。<mark>まだ勉強中</mark>なので、間違いや書きかけもそのまま残しています。</p>
+      <p>日々の進捗は<a href="blog.html">ブログ</a>に、四コマやイラスト、小論文は<a href="column.html">コラム</a>にまとめています。</p>
+      <dl class="profile">
+        <dt>サイト名</dt><dd>哲学ノート</dd>
+        <dt>管理人</dt><dd>Azalea72</dd>
+        <dt>内容</dt><dd>哲学の勉強記録・四コマ・イラスト・小論文</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-links">
+    <h2 id="h-links">リンク</h2>
+    <p class="sec-note">ご連絡は以下のSNSか、下のフォームからお願いします。</p>
+
+    <p class="group">漫画・イラスト掲載サイト</p>
+    <ul class="links">
+      <li><a class="link" href="https://rookie.shonenjump.com/users/14728546961183734555" target="_blank" rel="noopener"><span class="ico" aria-hidden="true">📚</span><span><b>ジャンプルーキー</b><small>オリジナル漫画を掲載中</small></span></a></li>
+      <li><a class="link" href="https://www.pixiv.net/users/105728284" target="_blank" rel="noopener"><span class="ico" aria-hidden="true">🎨</span><span><b>Pixiv</b><small>二次創作はこちらに掲載</small></span></a></li>
+    </ul>
+
+    <p class="group">SNS・その他</p>
+    <ul class="links">
+      <li><a class="link" href="https://bsky.app/profile/azaleaazalea88.bsky.social" target="_blank" rel="noopener"><span class="ico" aria-hidden="true">🦋</span><span><b>Bluesky</b><small>近況・作品のお知らせ</small></span></a></li>
+      <li><a class="link" href="https://www.youtube.com/@LilyPopins0512" target="_blank" rel="noopener"><span class="ico" aria-hidden="true">🎬</span><span><b>YouTube（リリポピ）</b><small>動画チャンネル</small></span></a></li>
+      <li><a class="link" href="https://lilipopi.github.io/lilypopins/" target="_blank" rel="noopener"><span class="ico" aria-hidden="true">🌸</span><span><b>リリポピのホームページ</b><small>別サイト</small></span></a></li>
+    </ul>
+
+    <p class="group">Azalea72のホームページ</p>
+    <ul class="links">
+      <li><a class="link" href="https://azaleacreativeroom888.github.io/storyreviewazalea/" target="_blank" rel="noopener"><span class="ico" aria-hidden="true">📖</span><span><b>書評サイト</b><small>本・アニメ・映画・ゲーム・小説の備忘録</small></span></a></li>
+      <li><a class="link" href="https://azaleacreativeroom888.github.io/fan-english/" target="_blank" rel="noopener"><span class="ico" aria-hidden="true">🍔</span><span><b>英語サイト（English Site）</b><small>英語話者と英語学習者に向けたサイト</small></span></a></li>
+      <li><a class="link" href="https://azaleacreativeroom888.github.io/fan-watercolor/" target="_blank" rel="noopener"><span class="ico" aria-hidden="true">☁️</span><span><b>水彩画サイト</b><small>水彩画掲載</small></span></a></li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="h-form">
+    <h2 id="h-form">お問い合わせフォーム</h2>
+    <div class="form-card">
+      <p class="form-intro">ご質問・ご感想などはこちらからどうぞ。<br>Gmailで受け取り、返信いたします。</p>
+
+      <div data-fs-success class="form-success" role="status">メッセージを送信しました。ありがとうございます！</div>
+      <div data-fs-error class="form-error-global" role="alert"></div>
+
+      <form id="contact-form" action="https://formspree.io/f/maqvpvoz" method="POST">
+        <div class="fg">
+          <label for="name">お名前</label>
+          <input type="text" id="name" name="name" placeholder="お名前（ニックネームでもOK）" autocomplete="name">
+        </div>
+        <div class="fg">
+          <label for="email">メールアドレス <span class="req">*</span></label>
+          <input type="email" id="email" name="email" data-fs-field placeholder="example@email.com" autocomplete="email" required>
+          <span data-fs-error="email" class="field-error"></span>
+        </div>
+        <div class="fg">
+          <label for="message">メッセージ <span class="req">*</span></label>
+          <textarea id="message" name="message" data-fs-field placeholder="メッセージを入力してください…" rows="6" required></textarea>
+          <span data-fs-error="message" class="field-error"></span>
+        </div>
+        <button class="btn" type="submit" data-fs-submit-btn>📮 送信する</button>
+      </form>
+    </div>
+  </section>
+
+  <a class="back" href="index.html">← ホームに戻る</a>
+</main>
+
+<footer>
+  <p>当サイトに掲載されている画像・文章・作品について、AI学習への利用、トレース（トレパク）、無断転載・転載、二次利用を禁止します。スクリーンショットの転載・無断引用はご遠慮ください。</p>
+  <p>Please refrain from using any images, text, or works on this website for AI training, tracing, unauthorized reproduction, redistribution, or secondary use.</p>
+  <p>© 哲学ノート</p>
+</footer>
+
+<script>
+  window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+  formspree('initForm', { formElement: '#contact-form', formId: 'maqvpvoz' });
+</script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+
+</body>
+</html>
